@@ -1,3 +1,22 @@
+/* The Problem:
+ * The game takes place on a 16x16 two-dimensional toroidal grid of square cells, 
+ * represented as a flat 256-bit vector. Every cell interacts with its eight 
+ * neighbors (horizontal, vertical, and diagonal) based on these four conditions 
+ * at each clock cycle (or generation):
+ *
+ * Underpopulation: Any live cell with fewer than two live neighbors dies 
+ *                  (as if by loneliness).
+ * Survival:        Any live cell with two or three live neighbors lives on 
+ *                  to the next generation.
+ * Overpopulation:  Any live cell with more than three live neighbors dies 
+ *                  (as if by overcrowding).
+ * Reproduction:    Any dead cell with exactly three live neighbors becomes 
+ *                  a live cell.
+ *
+ * The game state advances by one timestep every clock cycle, unless the 
+ * 'load' signal is high, which populates the grid with an initial state.
+ */
+
 module top_module(
     input clk,
     input load,
